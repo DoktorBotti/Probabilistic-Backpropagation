@@ -22,7 +22,7 @@ y = data[ :, data.shape[ 1 ] - 1 ]
 
 permutation = np.random.choice(range(X.shape[ 0 ]),
     X.shape[ 0 ], replace = False)
-size_train = np.round(X.shape[ 0 ] * 0.9)
+size_train = int(np.round(X.shape[ 0 ] * 0.9))
 index_train = permutation[ 0 : size_train ]
 index_test = permutation[ size_train : ]
 
@@ -47,11 +47,11 @@ m, v, v_noise = net.predict(X_test)
 
 rmse = np.sqrt(np.mean((y_test - m)**2))
 
-print rmse
+print(rmse)
 
 # We compute the test log-likelihood
 
 test_ll = np.mean(-0.5 * np.log(2 * math.pi * (v + v_noise)) - \
     0.5 * (y_test - m)**2 / (v + v_noise))
 
-print test_ll
+print(test_ll)
